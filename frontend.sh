@@ -9,7 +9,7 @@ cd /usr/share/nginx/html &>>$LOG_FILE
 
 
 echo removing old web content
-rm -rf * &>>$LOG_FILE
+rm -rf * &>>/tmp/frontend
 echo status = $?
 echo extarcting nginx
 unzip /tmp/frontend.zip &>>$LOG_FILE
