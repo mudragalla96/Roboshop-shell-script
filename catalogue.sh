@@ -7,17 +7,17 @@ echo "Installing NodeJS Server"
 yum install nodejs -y &>>${LOG_FILE}
 echo status = $?
 
-echo "Add Roboshop Appilication User"
+echo "Add Roboshop Application User"
 useradd roboshop &>>${LOG_FILE}
 echo status = $?
 
-echo "Download Catalogue Appilication Code"
+echo "Download Catalogue Application Code"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>${LOG_FILE}
 echo status = $?
 
 cd /home/roboshop
 
-echo "Extract Catalogue Appilication Code"
+echo "Extract Catalogue Application Code"
 unzip /tmp/catalogue.zip &>>${LOG_FILE}
 echo status = $?
 
