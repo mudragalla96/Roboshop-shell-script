@@ -4,7 +4,7 @@ echo "Setup NodeJS Repo File"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOG_FILE
 echo status = $?
 echo "Installing NodeJS Server"
-yum install nodejs -y ec  &>>$LOG_FILE
+yum install nodejs -y   &>>$LOG_FILE
 echo status = $?
 
 echo "Add Roboshop Appilication User"
