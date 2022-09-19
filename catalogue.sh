@@ -50,7 +50,7 @@ fi
 cd /home/roboshop
 
 echo "Clean Old App Content"
-rm - rf catalogue &>>${LOG_FILE}
+rm -rf catalogue &>>${LOG_FILE}
 if [ $? -eq 0 ]; then
   echo status = SUCCESS
 else
