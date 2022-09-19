@@ -34,7 +34,7 @@ fi
 
 echo "Download Catalogue Application Code"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>${LOG_FILE}
-iStatusCheck $?
+StatusCheck $?
 
 
 cd /home/roboshop
@@ -60,7 +60,7 @@ StatusCheck $?
 
 echo "Setup Catalogue Service"
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service &>>${LOG_FILE}
-iStatusCheck $?
+StatusCheck $?
 
 
 systemctl daemon-reload &>>${LOG_FILE}
@@ -70,4 +70,3 @@ echo "Starting Catalogue Service"
 systemctl start catalogue &>>${LOG_FILE}
 StatusCheck $?
 
-}
