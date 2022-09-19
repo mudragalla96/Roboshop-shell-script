@@ -25,16 +25,17 @@ else
   exit 1
 fi
 
-
-echo "Add Roboshop Application User"
-useradd roboshop &>>${LOG_FILE}
-if [ $? -eq 0 ]; then
-  echo status = SUCCESS
-else
+id roboshop &>>${LOG_FILE}
+if [ $? -ne 0 ]; then
+ echo "Add Roboshop Application User"
+ useradd roboshop &>>${LOG_FILE}
+ if [ $? -eq 0 ]; then
+   echo status = SUCCESS
+ else
   echo status = FAILURE
   exit 1
+ fi
 fi
-
 
 echo "Download Catalogue Application Code"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>${LOG_FILE}
@@ -47,6 +48,15 @@ fi
 
 
 cd /home/roboshop
+
+echo "clean old app content"
+rm - rf catalogue &>>${LOG_FILE}
+if [ $? -eq 0 ]; then
+  echo status = SUCCESS
+else
+  echo status = FAILURE
+  exit 1
+fi
 
 echo "Extract Catalogue Application Code"
 unzip /tmp/catalogue.zip &>>${LOG_FILE}
