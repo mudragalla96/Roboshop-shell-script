@@ -77,7 +77,7 @@ cd /home/roboshop/catalogue
 
 echo "Install NodeJS Dependencies"
 npm install &>>${LOG_FILE}
-iif [ $? -eq 0 ]; then
+if [ $? -eq 0 ]; then
    echo -e status = "\e[32mSUCCESS\e[0m"
  else
    echo -e status = "\e[31mFAILURE\e0m"
