@@ -1,5 +1,6 @@
 LOG_FILE=/tmp/user
 
+source common.sh
 
 echo "Setup NodeJS Repo File"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${LOG_FILE}
