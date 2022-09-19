@@ -35,7 +35,6 @@ unzip /tmp/catalogue.zip &>>${LOG_FILE}
 StatusCheck $?
 
 
-
 mv catalogue-main catalogue
 cd /home/roboshop/catalogue
 
