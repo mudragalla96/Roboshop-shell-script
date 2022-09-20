@@ -8,7 +8,6 @@ echo "Setup MySQL Repo"
 echo "Disable MySQL Default Module to Enable 5.7 MySQL"
  dnf module disable mysql -y &>>$LOG_FILE
 StatusCheck $?
-
 echo "Install MySQL Server"
  yum install mysql-community-server -y &>>$LOG_FILE
 StatusCheck $?
