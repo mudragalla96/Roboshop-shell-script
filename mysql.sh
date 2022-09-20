@@ -15,28 +15,10 @@ systemctl enable mysqld &>>$LOG_FILE
 systemctl restart mysqld &>>$LOG_FILE
 StatusCheck $?
 
-# DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
+DEFAULT_PASSWORD=$( grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
 
- #echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${ROBOSHOP_MYSQL_PASSWORD}');
-       #FLUSH PRIVILEGES;" >/tmp/root-pass.sql
-
- #echo "show databases;" |mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD} &>>$LOG_FILE
- #if [ $? -ne 0 ]; then
-   #echo "Change the default root password"
-  # mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/root-pass.sql &>>$LOG_FILE
-  # StatusCheck $?
- #fi
- #mysql_secure_installation
-
- #mysql -uroot -pRoboShop@1
-
- #> uninstall plugin validate_password;
+echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('mypass');
+     FLUSH PRIVILEGES;"
 
 
- #curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip"
 
-
- #cd /tmp
- #unzip mysql.zip
-# cd mysql-main
-# mysql -u root -pRoboShop@1 <shipping.sql
