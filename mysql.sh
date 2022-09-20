@@ -6,15 +6,15 @@ echo "Setup MySQL Repo"
  StatusCheck $?
 
 echo "Disable MySQL Default Module to Enable 5.7 MySQL"
- dnf module disable mysql -y &>>${LOG_FILE}
+ dnf module disable mysql -y &>>$LOG_FILE
 StatusCheck $?
 
 echo "Install MySQL Server"
- yum install mysql-community-server -y &>>${LOG_FILE}
+ yum install mysql-community-server -y &>>$LOG_FILE
 StatusCheck $?
 echo "Start MySQL Service"
-systemctl enable mysqld &>>${LOG_FILE}
-systemctl restart mysqld &>>${LOG_FILE}
+systemctl enable mysqld &>>$LOG_FILE
+systemctl restart mysqld &>>$LOG_FILE
 StatusCheck $?
 
  DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
@@ -23,7 +23,7 @@ StatusCheck $?
        FLUSH PRIVILEGES;" >/tmp/root-pass.sql
 
  echo "Change the default root password"
- mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" >/tmp/root-pass.sql &>>${LOG_FILE}
+ mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" >/tmp/root-pass.sql &>>$LOG_FILE
  StatusCheck $?
 
  #mysql_secure_installation
