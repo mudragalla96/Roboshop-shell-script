@@ -23,6 +23,7 @@ StatusCheck $?
 
   echo "Change the default root password"
  mysql -uroot -p"${DEFAULT_PASSWORD}" >/tmp/root-pass.sql &>>$LOG_FILE
+ StatusCheck $?
 #echo "Change the default root password"
  #mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" >/tmp/root-pass.sql &>>$LOG_FILE
  #StatusCheck $?
