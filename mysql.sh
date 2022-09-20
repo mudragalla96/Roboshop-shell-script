@@ -7,9 +7,11 @@ echo "Setup MySQL Repo"
 echo "Disable MySQL Default Module to Enable 5.7 MySQL"
  dnf module disable mysql -y &>>$LOG_FILE
 StatusCheck $?
+
 echo "Install MySQL Server"
- yum install mysql-community-server -y &>>$LOG_FILE
+yum install mysql-community-server -y &>>$LOG_FILE
 StatusCheck $?
+
 echo "Start MySQL Service"
 systemctl enable mysqld &>>$LOG_FILE
 systemctl restart mysqld &>>$LOG_FILE
@@ -21,5 +23,5 @@ echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${ROBOSHOP_MYSQL_PASSWORD}
      FLUSH PRIVILEGES;" >/tmp/root-pass.sql
 
 echo "Change the default root password"
-mysql -uroot -p"${DEFAULT_PASSWORD}" </tmp/root-pass.sql &>>$LOG_FILE
+mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/root-pass.sql &>>$LOG_FILE
 StatusCheck $?
