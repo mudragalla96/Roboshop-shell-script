@@ -34,10 +34,16 @@ echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${ROBOSHOP_MYSQL_PASSWORD}
   StatusCheck $?
 fi
 
+echo "Download Schema"
+ curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>>$LOG_FILE
+ StatusCheck $?
 
-#uninstall plugin validate_password;
-# curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip"
-# cd /tmp
-# unzip mysql.zip
-# cd mysql-main
-# mysql -u root -pRoboShop@1 <shipping.sql
+ echo "Extract Schema"
+ cd /tmp
+ unzip -o mysql.zip &>>$LOG_FILE
+ StatusCheck $?
+
+echo "Load Schema"
+ cd mysql-main
+ mysql -u root -p${ROBOSHOP_MYSQL_PASSWORD} <shipping.sql &>>$LOG_FILE
+ StatusCheck $?
