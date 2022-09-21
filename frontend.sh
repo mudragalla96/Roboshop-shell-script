@@ -2,22 +2,22 @@ LOG_FILE=/tmp/frontend
 
 source common.sh
 
-echo installing nginx
+echo "installing nginx"
 yum install nginx -y &>>$LOG_FILE
 StatusCheck $?
 
-echo downloading the nginx
+echo "downloading the nginx"
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>$LOG_FILE
 StatusCheck $?
 
 cd /usr/share/nginx/html
 
-echo removing old web content
+echo "removing old web content"
 rm -rf * &>>/tmp/frontend
 StatusCheck $?
 
-echo extarcting nginx
-unzip -o /tmp/frontend.zip &>>$LOG_FILE
+echo "extarcting nginx"
+unzip - /tmp/frontend.zip &>>$LOG_FILE
 StatusCheck $?
 
 mv frontend-main/static/* . &>>$LOG_FILE
