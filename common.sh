@@ -113,5 +113,5 @@ sed -i -e "/uid/ c uid = ${APP_UID}" -e "/gid/ c gid = ${APP_GID}" /home/robosho
 StatusCheck $?
 
 SYSTEMD_SETUP
-}
 
+}
