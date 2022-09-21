@@ -41,7 +41,7 @@ APP_PREREQ () {
 
 SYSTEMD_SETUP () {
  echo "Update SystemD Service File"
-sed -i -e 's/REDIS_ENDPOINT/redis.vykunta.internal/' -e 's/MONGO_ENDPOINT/mongodb.vykunta.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.vykunta.internal/' -e 's/MONGO_DNSNAME/mongodb.vykunta.internal/' -e 's/CARTENDPOINT/cart.vykunta,internal/' -e 's/DBHOST/mysql.vykunta.internal/' -e 's/CARTHOST/cart.vykunta.internal/' -e 's/USERHOST/user.vykunta.internal/' -e 's/AMQPHOST/rabbitmq.vykunta.internal/' /home/roboshop/${COMPONENT}/systemd.service
+sed -i -e 's/REDIS_ENDPOINT/redis.vykunta.internal/' -e 's/MONGO_ENDPOINT/mongodb.vykunta.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.vykunta.internal/' -e 's/MONGO_DNSNAME/mongodb.vykunta.internal/' -e 's/CARTENDPOINT/cart.vykunta.internal/' -e 's/DBHOST/mysql.vykunta.internal/' -e 's/CARTHOST/cart.vykunta.internal/' -e 's/USERHOST/user.vykunta.internal/' -e 's/AMQPHOST/rabbitmq.vykunta.internal/' /home/roboshop/${COMPONENT}/systemd.service
  StatusCheck $?
 
 
