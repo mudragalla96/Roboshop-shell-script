@@ -92,3 +92,21 @@ APP_PREREQ
  SYSTEMD_SETUP
 
 }
+
+PYTHON () {
+echo "Install Python 3"
+yum install python36 gcc python3-devel -y &>>${LOG_FILE}
+StatusCheck $?
+
+APP_PREREQ
+
+ cd /home/roboshop/${COMPONENT}
+ echo "Install Python Dependencies for App "
+ pip3 install -r requirements.txt &>>${LOG_FILE}
+StatusCheck $?
+# mv /home/roboshop/payment/systemd.service /etc/systemd/system/payment.service
+# systemctl daemon-reload
+# systemctl enable payment
+# systemctl start payment
+
+}
