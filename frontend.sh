@@ -17,7 +17,7 @@ rm -rf * &>>/tmp/frontend
 StatusCheck $?
 
 echo "extarcting nginx"
-unzip - /tmp/frontend.zip &>>$LOG_FILE
+unzip  /tmp/frontend.zip &>>$LOG_FILE
 StatusCheck $?
 
 mv frontend-main/static/* . &>>$LOG_FILE
