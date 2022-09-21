@@ -24,7 +24,7 @@ mv frontend-main/static/* . &>>$LOG_FILE
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
 
 echo "Update Roboshop Config File"
-sed -i -e '/catalogue/ s/localhost/catalogue.roboshop.internal/' -e '/user/ s/localhost/user.roboshop.internal/' -e '/cart/ s/localhost/cart.roboshop.internal/' -e '/payment/ s/localhost/payment.roboshop.internal/' -e '/shipping/ s/localhost/shipping.roboshop.internal/' /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
+sed -i -e '/catalogue/ s/localhost/catalogue.vykunta.internal/' -e '/user/ s/localhost/user.vykunta.internal/' -e '/cart/ s/localhost/cart.vykunta.internal/' -e '/payment/ s/localhost/payment.vykunta.internal/' -e '/shipping/ s/localhost/shipping.vykunta.internal/' /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
 StatusCheck $?
 
 echo "starting nginx"
