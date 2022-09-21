@@ -56,7 +56,6 @@ sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongo
  systemctl start ${COMPONENT} &>>${LOG_FILE}
  StatusCheck $?
 
-}
 
 NodeJS() {
 
@@ -116,6 +115,3 @@ StatusCheck $?
 SYSTEMD_SETUP
 }
 
-# systemctl daemon-reload
-# systemctl enable payment
-# systemctl start payment
